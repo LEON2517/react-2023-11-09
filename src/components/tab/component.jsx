@@ -1,5 +1,5 @@
-export const Tab = ({ restaurant }) => {
+export const Tab = ({ name }) => {
   return <div>
-    {restaurant}
+    {name}
   </div>
 }
