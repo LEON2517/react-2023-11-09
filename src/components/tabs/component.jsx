@@ -1,6 +1,8 @@
 import { Tab } from "../tab/component";
 
-export const Tabs = ({ restaurants }) =>
-  restaurants.map(restaurant => <Tab>
-    {restaurant.name}
-  </Tab>)
+export const Tabs = ({ restaurants, onRestaurantSelect }) => <div>
+  {restaurants.map(({ name, id }) =>
+    <Tab onClick={() => onRestaurantSelect(id)}>
+      {name}
+    </Tab>)}
+</div>
