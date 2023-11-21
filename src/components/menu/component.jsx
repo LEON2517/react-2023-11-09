@@ -1,9 +1,7 @@
 import { Dishes } from "../dishes/component";
-import { Reviews } from "../reviews/component";
 
-export const Menu = ({ restaurant }) => <div>
+export const Menu = ({ menu }) => <div>
   <span>Меню</span>
-  <Dishes menu={restaurant.menu} />
+  <Dishes menu={menu} />
   <span>Отзывы</span>
-  <Reviews reviews={restaurant.reviews} />
 </div>

@@ -1,6 +1,6 @@
 import { Tab } from "../tab/component";
 
-export const Tabs = ({ restaurants }) => {
-  return restaurants.map(restaurant =>
-    <Tab name={restaurant.name}/>)
-}
+export const Tabs = ({ restaurants }) =>
+  restaurants.map(restaurant => <Tab>
+    {restaurant.name}
+  </Tab>)

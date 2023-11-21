@@ -1,3 +1,3 @@
-export const Dish = ({ dish }) => <li>
+export const Dish = ({ dish }) => <span>
   {dish.name}
-</li>
+</span>

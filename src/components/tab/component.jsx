@@ -1,5 +1,5 @@
-export const Tab = ({ name }) => {
-  return <div>
-    {name}
-  </div>
+export const Tab = ({ children }) => {
+  return <button>
+    {children}
+  </button>
 }
