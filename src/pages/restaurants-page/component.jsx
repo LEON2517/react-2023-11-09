@@ -1,10 +1,10 @@
 import { Tabs } from "../../components/tabs/component";
-import { Restaurants } from "../../components/restaurants/component";
 import { useState } from "react";
+import { Restaurant } from "../../components/restaurant/component";
 
 export const RestaurantsPage = ({ restaurants }) => {
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
-  const filteredRestaurants = restaurants.filter(restaurant => restaurant.id === selectedRestaurant);
+  const filteredRestaurants = restaurants.find(restaurant => restaurant.id === selectedRestaurant);
 
   if (!restaurants.length) return null;
 
@@ -14,7 +14,7 @@ export const RestaurantsPage = ({ restaurants }) => {
         restaurants={restaurants}
         onRestaurantSelect={(restaurantId) => setSelectedRestaurant(restaurantId)}
       />
-      <Restaurants restaurants={filteredRestaurants} />
+      <Restaurant restaurant={filteredRestaurants} />
     </div>
   )
 }
