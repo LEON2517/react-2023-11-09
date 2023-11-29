@@ -2,16 +2,14 @@ import { useState } from "react";
 import { Counter } from "../counter/component";
 
 export const Dish = ({ dish }) => {
-  const [count, setCount] = useState(0);
+  const [value, setValue] = useState(0);
 
   function decrement() {
-    if (count <= 0) return null;
-    setCount(count-1)
+    setValue(value-1)
   }
 
   function increment() {
-    if (count >= 5) return null;
-    setCount(count+1)
+    setValue(value+1)
   }
 
   if (!dish) return null;
@@ -21,7 +19,7 @@ export const Dish = ({ dish }) => {
       {dish.name}
       </span>
       <Counter
-        count={count}
+        value={value}
         decrement={decrement}
         increment={increment}
       />

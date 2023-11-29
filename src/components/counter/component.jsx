@@ -1,13 +1,21 @@
-export const Counter = ({count, decrement, increment}) => {
+export const Counter = ({value, decrement, increment, min = 0, max = 5}) => {
   return (
     <div>
-      <button onClick={() => decrement()}>
+      <button
+        type="button"
+        onClick={() => decrement()}
+        disabled={value <= min}
+      >
         -
       </button>
       <span>
-        {count}
+        {value}
       </span>
-      <button onClick={() => increment()}>
+      <button
+        type="button"
+        onClick={() => increment()}
+        disabled={value >= max}
+      >
         +
       </button>
     </div>
