@@ -3,8 +3,7 @@ import {Counter} from "../counter/component";
 
 const SET_NAME = 'Entering a name value';
 const SET_TEXT = 'Entering review text';
-const SET_INCREMENT_RATING = 'Increase rating value';
-const SET_DECREMENT_RATING = 'Decrease rating value';
+const SET_RATING = 'Entering rating value';
 
 const defaultFormValue = {
   name: '',
@@ -23,17 +22,9 @@ const reducer = (state, action) => {
     case SET_TEXT:
       return {...state, text: payload.text}
 
-    case SET_INCREMENT_RATING:
+    case SET_RATING:
       return {...state, rating: payload.rating}
 
-    case SET_DECREMENT_RATING:
-      return {...state, rating: payload.rating}
-
-/*  В доке https://react.dev/reference/react/useReducer рекомендуется прокидывать ошибку вместо default,
-    как делать правильно?
-    default:
-      return state;
-*/
   }
   throw Error('Unknown action: ' + type);
 };
@@ -70,11 +61,11 @@ export const ReviewForm = () => {
       <Counter
         value={formValue.rating}
         increment={() => dispatch({
-          type: SET_INCREMENT_RATING,
+          type: SET_RATING,
           payload: { rating: formValue.rating + 0.5 }
         })}
         decrement={() => dispatch({
-          type: SET_DECREMENT_RATING,
+          type: SET_RATING,
           payload: { rating: formValue.rating - 0.5}
         })}
       />
