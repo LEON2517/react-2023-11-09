@@ -4,12 +4,6 @@
   box-sizing:border-box;
 }
 
-/**
- * The body element has a default 8px margin indicated by the bar on top. The height value is 0. Set adaptive page height.
- */
-
-body { min-height: 100vh; }
-
 a {
   text-decoration:none;
   color:inherit;

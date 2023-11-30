@@ -1,0 +1,11 @@
+.carousel {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  background-color: var(--grey-300);
+}
+
+.carouselItem {
+  flex-grow: 1;
+  background-color: var(--blue-500);
+}

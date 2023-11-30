@@ -1,5 +1,7 @@
 import { useReducer } from "react";
 import {Counter} from "../counter/component";
+import styles from "./styles.module.scss";
+import classNames from "classnames";
 
 const SET_NAME = 'Entering a name value';
 const SET_TEXT = 'Entering review text';
@@ -29,12 +31,12 @@ const reducer = (state, action) => {
   throw Error('Unknown action: ' + type);
 };
 
-export const ReviewForm = () => {
+export const ReviewForm = ({ className }) => {
   const [formValue, dispatch] = useReducer(reducer, defaultFormValue)
 
   return (
-    <form>
-      <div>
+    <form className={className}>
+      <div className={styles.container}>
         <label htmlFor="name">Name</label>
         <input
           id="name"
@@ -46,9 +48,9 @@ export const ReviewForm = () => {
            })}
         />
       </div>
-      <div>
+      <div className={classNames(styles.container, styles.marginTop)}>
         <label htmlFor="text">Text</label>
-        <input
+        <textarea
           id="text"
           type="text"
           value={formValue.text}
@@ -59,6 +61,7 @@ export const ReviewForm = () => {
         />
       </div>
       <Counter
+        className={styles.marginTop}
         value={formValue.rating}
         increment={() => dispatch({
           type: SET_RATING,

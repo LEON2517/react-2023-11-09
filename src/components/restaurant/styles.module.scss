@@ -1,0 +1,20 @@
+.titleContainer {
+  display: flex;
+  justify-content: center;
+  padding: var(--spacing-2);
+  background-color: var(--blue-500);
+}
+
+.container {
+  display: flex;
+}
+
+.item {
+  flex-grow: 1;
+  flex-basis: 50%;
+  padding: var(--spacing-2);
+}
+
+.marginTop  {
+  margin-top: var(--spacing-2);
+}

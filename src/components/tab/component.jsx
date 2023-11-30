@@ -1,5 +1,9 @@
+import styles from "./styles.module.scss";
+
 export const Tab = ({ children, onClick }) => {
-  return <button onClick={onClick}>
-    {children}
-  </button>
+  return (
+    <div onClick={onClick} className={styles.tab}>
+      {children}
+    </div>
+  )
 }

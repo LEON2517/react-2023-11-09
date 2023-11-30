@@ -1,3 +1,4 @@
+import { Layout } from "../../components/layout/component";
 import { Tabs } from "../../components/tabs/component";
 import { useState } from "react";
 import { Restaurant } from "../../components/restaurant/component";
@@ -9,12 +10,12 @@ export const RestaurantsPage = ({ restaurants }) => {
   if (!restaurants.length) return null;
 
   return (
-    <div>
+    <Layout>
       <Tabs
         restaurants={restaurants}
         onRestaurantSelect={(restaurantId) => setSelectedRestaurant(restaurantId)}
       />
       <Restaurant restaurant={filteredRestaurants} />
-    </div>
+    </Layout>
   )
 }
