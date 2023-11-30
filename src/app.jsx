@@ -1,3 +1,4 @@
+import './styles/main.scss';
 import { RestaurantsPage } from "./pages/restaurants-page/component";
 import { restaurants } from "./constants/mock";
 
