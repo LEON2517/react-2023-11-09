@@ -1,3 +1,13 @@
+/*internal styles*/
+.reviews {
+  padding: var(--spacing-2);
+}
+
 .title {
   font-size: var(--h3);
+}
+
+/*external styles*/
+.review {
+  margin-top: var(--spacing-2);
 }

@@ -35,43 +35,49 @@ export const ReviewForm = ({ className }) => {
   const [formValue, dispatch] = useReducer(reducer, defaultFormValue)
 
   return (
-    <form className={className}>
-      <div className={styles.container}>
-        <label htmlFor="name">Name</label>
-        <input
-          id="name"
-          type="text"
-          value={formValue.name}
-          onChange={(event) => dispatch({
-            type: SET_NAME,
-            payload: { name: event.target.value }
-           })}
-        />
-      </div>
-      <div className={classNames(styles.container, styles.marginTop)}>
-        <label htmlFor="text">Text</label>
-        <textarea
-          id="text"
-          type="text"
-          value={formValue.text}
-          onChange={(event) => dispatch({
-            type: SET_TEXT,
-            payload: { text: event.target.value }
+    <div className={classNames(styles.reviewForm, className)}>
+      <span className={styles.title}>Rating</span>
+      <form>
+        <div className={styles.box}>
+          <label htmlFor="name">Name</label>
+          <input
+            className={styles.input}
+            id="name"
+            type="text"
+            value={formValue.name}
+            onChange={(event) => dispatch({
+              type: SET_NAME,
+              payload: { name: event.target.value }
+            })}
+          />
+        </div>
+        <div className={styles.box}>
+          <label htmlFor="text">Text</label>
+          <textarea
+            className={styles.textarea}
+            id="text"
+            type="text"
+            value={formValue.text}
+            onChange={(event) => dispatch({
+              type: SET_TEXT,
+              payload: { text: event.target.value }
+            })}
+          />
+        </div>
+        <Counter
+          className={styles.counter}
+          value={formValue.rating}
+          increment={() => dispatch({
+            type: SET_RATING,
+            payload: { rating: formValue.rating + 0.5 }
+          })}
+          decrement={() => dispatch({
+            type: SET_RATING,
+            payload: { rating: formValue.rating - 0.5}
           })}
         />
-      </div>
-      <Counter
-        className={styles.marginTop}
-        value={formValue.rating}
-        increment={() => dispatch({
-          type: SET_RATING,
-          payload: { rating: formValue.rating + 0.5 }
-        })}
-        decrement={() => dispatch({
-          type: SET_RATING,
-          payload: { rating: formValue.rating - 0.5}
-        })}
-      />
-    </form>
+      </form>
+    </div>
+
   )
 }

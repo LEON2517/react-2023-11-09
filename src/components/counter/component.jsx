@@ -1,18 +1,16 @@
 import classNames from "classnames";
 import styles from "./styles.module.scss";
 
-// стиль счетчика доделаю чуть позже, немного не успел
 export const Counter = ({value, decrement, increment, min = 0, max = 5, className}) => {
   return (
-    <div className={className}>
-      <button
-        type="button"
+    <div className={classNames(styles.counter, className)}>
+      <Button
+        position='left'
         onClick={() => decrement()}
         disabled={value <= min}
-        className={styles.button}
       >
         -
-      </button>
+      </Button>
       <div>
         <input
           className={styles.input}
@@ -20,35 +18,30 @@ export const Counter = ({value, decrement, increment, min = 0, max = 5, classNam
           value={value}
         />
       </div>
-      <button
-/*        className={classNames(styles.button,{
-          [styles.left]: type === 'left',
-          [styles.right]: type === 'right',
-        })}*/
-        type="button"
+      <Button
+        position='right'
         onClick={() => increment()}
         disabled={value >= max}
       >
         +
-      </button>
+      </Button>
     </div>
   )
 }
-/*
 
-const Button = ({ type, onClick }) => {
-  if (!type) return null;
+const Button = ({ children, position, onClick, disabled }) => {
+  if (!position) return null;
   return (
     <button
-      className={classNames(styles.button,{
-        [styles.left]: type === 'left',
-        [styles.right]: type === 'right',
-      })}
       type="button"
       onClick={onClick}
-      disabled={value >= max}
+      disabled={disabled}
+      className={classNames(styles.button,{
+        [styles.left]: position === 'left',
+        [styles.right]: position === 'right',
+      })}
     >
-      +
+      {children}
     </button>
   )
-}*/
+}

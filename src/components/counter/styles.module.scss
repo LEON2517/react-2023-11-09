@@ -1,7 +1,34 @@
-.input {
+/*internal styles*/
+.counter {
+  position: relative;
+  user-select: none;
   width: 150px;
-  height: 50px;
-  padding: 8px 24px;
-  border: 1px solid var(--black);;
+}
+
+.input {
+  width: 100%;
+  padding: var(--spacing-1) var(--spacing-3);
+  border: 1px solid var(--black);
   text-align: center;
+}
+
+.button {
+  height: 100%;
+  width: 40px;
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--h4);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  right: 0;
 }
