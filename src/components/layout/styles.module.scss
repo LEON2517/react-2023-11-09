@@ -1,10 +1,12 @@
 /*internal styles*/
 .layout {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
   min-height: 100vh;
 }
 
-.main {
-  flex-grow: 1;
+/*external styles*/
+.header {
+  position: sticky;
+  top: 0;
 }

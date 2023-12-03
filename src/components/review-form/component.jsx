@@ -2,6 +2,7 @@ import { useReducer } from "react";
 import {Counter} from "../counter/component";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
+import { Button } from "../button/component";
 
 const SET_NAME = 'Entering a name value';
 const SET_TEXT = 'Entering review text';
@@ -36,7 +37,7 @@ export const ReviewForm = ({ className }) => {
 
   return (
     <div className={classNames(styles.reviewForm, className)}>
-      <span className={styles.title}>Rating</span>
+      <span className={styles.title}>Reviews form</span>
       <form>
         <div className={styles.box}>
           <label htmlFor="name">Name</label>
@@ -76,6 +77,9 @@ export const ReviewForm = ({ className }) => {
             payload: { rating: formValue.rating - 0.5}
           })}
         />
+        <Button className={styles.button}>
+          Отправить отзыв
+        </Button>
       </form>
     </div>
 
