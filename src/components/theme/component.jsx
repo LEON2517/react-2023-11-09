@@ -1,25 +1,18 @@
 import { useCallback, useState } from "react";
 import { ThemeContext } from "./context";
 
-export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState('light');
-  console.log('theme', theme)
+export const ThemeProvider = ({ children, defaultTheme = 'light' }) => {
+  const [theme, setTheme] = useState(defaultTheme);
 
-  /*
-  без useCallback
-  const toggleTheme = setTheme(theme === 'light' ? 'dark' : 'light')
-
-  useCallback с зависимостями
-   - если theme изменится - вернется новая ссылка на функцию
-   - если theme не изменится - вернется старая ссылка на функцию
-   const toggleTheme = useCallback(setTheme(theme === 'light' ? 'dark' : 'light'), [theme])*/
-
-  /*
-    useCallback без зависимостей (лучший вариант)
-    - у нас здесь нет зависимостей, как useCallback понимает, когда возвращать старую ссылку на функцию, а когда новую?
-  */
+/*  // переписал свой useCallback
   const toggleTheme = useCallback((currentTheme) =>
     setTheme(currentTheme === 'light' ? 'dark' : 'light'), []
+
+    // в Header изменил проброс данных
+  )*/
+
+  const toggleTheme = useCallback(() =>
+    setTheme((currentTheme) => currentTheme === 'light' ? 'dark' : 'light'), []
   )
 
   return (

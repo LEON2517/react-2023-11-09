@@ -4,6 +4,7 @@ import { useTheme } from "../theme/hooks";
 
 export const Button = ({ children, className, onClick }) => {
   const { theme } = useTheme();
+  console.log('theme', theme)
 
   return (
     <button

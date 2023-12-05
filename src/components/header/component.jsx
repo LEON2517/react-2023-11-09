@@ -5,7 +5,7 @@ import { ThemeProvider } from "../theme/component";
 import { useTheme } from "../theme/hooks";
 
 export const Header = ({ className }) => {
-  const { toggleTheme, theme } = useTheme();
+  const { toggleTheme } = useTheme();
 
   return (
     <header className={classNames(styles.header, className)}>
@@ -15,7 +15,7 @@ export const Header = ({ className }) => {
           <Button>
             Заказ
           </Button>
-          <Button onClick={() => toggleTheme(theme)}>
+          <Button onClick={toggleTheme}>
             Смена темы
           </Button>
         </ThemeProvider>
