@@ -11,7 +11,8 @@
   --xl: 1280px;
   /*@media (min-width: 1280px) { ... }*/
 
-  --tablet: var(--sm);
+  --mobile: var(--sm);
+  --tablet: var(--md);
   --laptop: var(--lg);
   --desktop: var(--xl);
 }

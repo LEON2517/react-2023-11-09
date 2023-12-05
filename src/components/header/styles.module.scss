@@ -1,5 +1,14 @@
 /*internal styles*/
 .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--spacing-2);
   height: 55px;
   background-color: var(--green-500);
+}
+
+.box {
+  display: flex;
+  gap: var(--spacing-2);
 }
