@@ -1,0 +1,22 @@
+/*internal styles*/
+.restaurant {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box {
+  text-align: center;
+  width: 100%;
+  padding: var(--spacing-2);
+  background-color: var(--blue-500);
+}
+
+.content {
+  width: 600px;
+}
+
+/*external styles*/
+.reviewForm  {
+  margin-top: var(--spacing-2);
+}

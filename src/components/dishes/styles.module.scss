@@ -1,0 +1,7 @@
+/*internal styles*/
+.dishItem {
+  margin-bottom: var(--spacing-2);
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

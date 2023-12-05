@@ -1,0 +1,30 @@
+/*internal styles*/
+.reviewForm {
+  padding: var(--spacing-2);
+}
+
+.title {
+  font-size: var(--h3);
+}
+
+.input {
+  padding: var(--spacing-1);
+  border: 1px solid var(--black);
+}
+
+.textarea {
+  height: 100px;
+  padding: var(--spacing-1);
+  border: 1px solid var(--black);
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--spacing-2);
+}
+
+/*external styles*/
+.counter {
+  margin-top: var(--spacing-2);
+}
