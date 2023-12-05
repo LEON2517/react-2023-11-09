@@ -1,0 +1,14 @@
+/*internal styles*/
+.button {
+  padding: var(--spacing-1) var(--spacing-2);
+  background-color: var(--primary);
+}
+
+.primary {
+  background-color: var(--primary);
+}
+
+.secondary {
+  background-color: var(--secondary);
+  color: var(--white);
+}
