@@ -2,7 +2,7 @@ import { Dishes } from "../dishes/component";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
 
-export const Menu = ({ menu, className }) => <div className={classNames(styles.menu, className)}>
+export const Menu = ({ className, dishIds }) => <div className={classNames(styles.menu, className)}>
   <span className={styles.title}>Menu</span>
-  <Dishes menu={menu} />
+  <Dishes dishIds={dishIds} />
 </div>

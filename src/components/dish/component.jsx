@@ -2,8 +2,13 @@ import { useState } from "react";
 import { Counter } from "../counter/component";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
+import { useSelector } from "react-redux";
+import { selectDishBiId } from "../../redux/features/entities/dish/selectors";
 
-export const Dish = ({ dish, className }) => {
+export const Dish = ({ id, className }) => {
+
+  const dish = useSelector((state) => selectDishBiId(state, id))
+
   const [value, setValue] = useState(0);
 
   function decrement() {
