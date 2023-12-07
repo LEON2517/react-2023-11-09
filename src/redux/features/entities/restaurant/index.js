@@ -8,9 +8,6 @@ export const restaurantSlice = createSlice({
       acc[restaurant.id] = restaurant;
       return acc;
     }, {}),
-    ids: normalizedRestaurants.map(({id}) => id),
-    ui: {
-      selectedRestaurant: null
-    }
+    ids: normalizedRestaurants.map(({id}) => id)
   }
 })
