@@ -1,15 +1,15 @@
 import { Layout } from "../../components/layout/component";
-import { Tabs } from "../../components/tabs/component";
 import { useState } from "react";
-import { Restaurant } from "../../components/restaurant/component";
+import { TabsContainer } from "../../components/tabs/container";
+import { RestaurantContainer } from "../../components/restaurant/container";
 
 export const RestaurantsPage = () => {
-  const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+  const [activeRestaurantId, setActiveRestaurantId] = useState(null);
 
   return (
     <Layout>
-      <Tabs onRestaurantSelect={(restaurantId) => setSelectedRestaurant(restaurantId)} />
-      <Restaurant selectedRestaurant={selectedRestaurant} />
+      <TabsContainer onRestaurantSelect={(restaurantId) => setActiveRestaurantId(restaurantId)} />
+      <RestaurantContainer restaurantId={activeRestaurantId} />
     </Layout>
   )
 }

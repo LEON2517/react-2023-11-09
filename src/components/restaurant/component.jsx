@@ -3,14 +3,8 @@ import { Reviews } from "../reviews/component";
 import { ReviewForm } from "../review-form/component";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
-import {useSelector} from "react-redux";
-import { selectRestaurantBiId } from "../../redux/features/entities/restaurant/selectors";
 
-export const Restaurant = ({ className, selectedRestaurant }) => {
-  const restaurant = useSelector(state => selectRestaurantBiId(state, selectedRestaurant))
-
-  if (!restaurant) return null;
-
+export const Restaurant = ({ className, restaurant }) => {
   return (
     <div className={classNames(styles.restaurant, className)}>
       <div className={styles.box}>
