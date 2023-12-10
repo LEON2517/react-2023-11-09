@@ -1,2 +1,2 @@
-export const selectDishModule = state => state.dish;
-export const selectDishBiId = (state, id) => selectDishModule(state).entities[id];
+export const selectCartModule = state => state.cart;
+export const selectDishAmount = (state, dishId) => selectCartModule(state)[dishId] || 0;

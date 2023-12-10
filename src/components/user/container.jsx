@@ -1,17 +1,22 @@
-import { useSelector } from "react-redux";
-import { Review } from "./component";
-import { selectReviewById } from "../../redux/features/entities/review/selectors";
-import { selectUserById } from "../../redux/features/entities/user/selectors";
+import { User } from "./component";
+import { useDispatch, useSelector } from "react-redux";
+import {selectUserById} from "../../redux/features/entities/user/selectors";
+import {useEffect} from "react";
+import { getUsers } from "../../redux/features/entities/user/thunks/get-users";
 
-export const ReviewContainer = ({ reviewId, ...rest}) => {
-  const review = useSelector(state => selectReviewById(state, reviewId))
+export const UserContainer = ({ review, ...rest}) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUsers())
+  }, [])
+
   const user = useSelector(state => selectUserById(state, review.userId))
 
-  if (!review || !user) return null;
+  if (!user) return null;
 
-  return <Review
+  return <User
     {...rest}
-    review={review}
     user={user}
   />
 }
