@@ -1,8 +1,8 @@
 import { User } from "./component";
 import { useDispatch, useSelector } from "react-redux";
-import {selectUserById} from "../../redux/features/entities/user/selectors";
+import {selectUserById} from "../../redux/entities/user/selectors";
 import {useEffect} from "react";
-import { getUsers } from "../../redux/features/entities/user/thunks/get-users";
+import { getUsers } from "../../redux/entities/user/thunks/get-users";
 
 export const UserContainer = ({ review, ...rest}) => {
   const dispatch = useDispatch();

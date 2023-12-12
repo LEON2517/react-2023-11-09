@@ -1,6 +1,6 @@
 import { Tabs } from "./component";
 import { useSelector } from "react-redux";
-import { selectRestaurantIds } from "../../redux/features/entities/restaurant/selectors";
+import { selectRestaurantIds } from "../../redux/entities/restaurant/selectors";
 
 export const TabsContainer = (props) => {
   const restaurantIds = useSelector(selectRestaurantIds);

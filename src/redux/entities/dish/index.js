@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {getDishes} from "./thunks/get-dishes";
-import { REQUEST_STATUSES } from "../../../../constants/request-statuses";
+import { REQUEST_STATUSES } from "../../../constants/request-statuses";
 
 export const dishSlice = createSlice({
   name: 'dish',

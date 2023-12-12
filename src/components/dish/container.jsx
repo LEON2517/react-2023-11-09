@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectDishBiId } from "../../redux/features/entities/dish/selectors";
+import { selectDishBiId } from "../../redux/entities/dish/selectors";
 import { Dish } from "./component";
 import { selectDishAmount } from "../../redux/ui/cart/selectors";
 import { cartActions } from "../../redux/ui/cart";

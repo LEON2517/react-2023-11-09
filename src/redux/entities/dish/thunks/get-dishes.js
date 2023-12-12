@@ -5,12 +5,9 @@ import { selectRestaurantBiId } from "../../restaurant/selectors";
 export const getDishes = createAsyncThunk(
   'dish/getDishes',
   async (restaurantId, { rejectWithValue }) => {
-    console.log('restaurantId', restaurantId)
     if (!restaurantId) return null;
     const response = await fetch(`http://localhost:3001/api/dishes?restaurantId=${restaurantId}`);
-    console.log('dish.response', response)
     const result = await response.json();
-    console.log('dish.result', result)
 
     if (!result?.length) {
       return rejectWithValue("Empty dish")

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {REQUEST_STATUSES} from "../../../../constants/request-statuses";
+import {REQUEST_STATUSES} from "../../../constants/request-statuses";
 import {getReviews} from "./thunks/get-reviews";
 
 export const reviewSlice = createSlice({
