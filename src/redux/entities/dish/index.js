@@ -1,14 +1,14 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createEntityAdapter, createSlice} from "@reduxjs/toolkit";
 import {getDishes} from "./thunks/get-dishes";
 import { REQUEST_STATUSES } from "../../../constants/request-statuses";
 
+const entityAdapter = createEntityAdapter();
+
 export const dishSlice = createSlice({
   name: 'dish',
-  initialState: {
-    entities: {},
-    ids: [],
-    status: REQUEST_STATUSES.IDLE,
-  },
+  initialState: entityAdapter.getInitialState({
+    status: REQUEST_STATUSES.IDLE
+  }),
   extraReducers: builder =>
     builder
       .addCase(getDishes.pending,
@@ -17,12 +17,24 @@ export const dishSlice = createSlice({
         })
       .addCase(getDishes.fulfilled, (state, { payload }) => {
 
-        Object.assign(state.entities, payload.reduce((acc, dish) => {
+        entityAdapter.upsertMany(state, payload)
+
+/*
+        Правильный вариант
+        state.entities = payload.reduce((acc, dish) => {
           acc[dish.id] = dish;
           return acc;
-        }, {}))
+        }, state.entities)
 
+        state.ids = Array.from(
+          new Set([...state.ids, ...payload.map(({ id }) => id)])
+        )*/
+
+
+/*
+        Мой вариант
         state.ids = Array.from(new Set(state.ids.concat(payload.map(({ id }) => id))));
+*/
 
         state.status = REQUEST_STATUSES.FULFILLED;
       })
