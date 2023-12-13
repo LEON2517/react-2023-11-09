@@ -1,16 +1,10 @@
-import { useDispatch } from "react-redux";
-import { Reviews } from "./component";
-import { getReviews } from "../../redux/entities/review/thunks/get-reviews";
-import { useEffect } from "react";
+import { useGetReviewsQuery } from "../../redux/services/api";
+import {Reviews} from "./component";
 
+export const ReviewsContainer = ({ restaurantId }) => {
 
-export const ReviewsContainer = ({ restaurantId, ...rest}) => {
-  const dispatch = useDispatch();
+  const { data, isFetching } = useGetReviewsQuery(restaurantId);
+  if (isFetching) return "Loading...";
 
-  useEffect(() => {
-    if (!restaurantId) return null;
-    dispatch(getReviews(restaurantId))
-  }, [restaurantId])
-
-  return <Reviews {...rest} />
+  return <Reviews reviews={data} />
 }

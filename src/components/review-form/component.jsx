@@ -3,6 +3,7 @@ import {Counter} from "../counter/component";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
 import { Button } from "../button/component";
+import { useChangeReviewsMutation, useCreateReviewsMutation } from "../../redux/services/api";
 
 const SET_NAME = 'Entering a name value';
 const SET_TEXT = 'Entering review text';
@@ -32,13 +33,17 @@ const reducer = (state, action) => {
   throw Error('Unknown action: ' + type);
 };
 
-export const ReviewForm = ({ className }) => {
+export const ReviewForm = ({ className, restaurantId, isOpenChangeReviewForm, review }) => {
   const [formValue, dispatch] = useReducer(reducer, defaultFormValue)
+
+  const [createReview] = useCreateReviewsMutation();
+
+  const [changeReviews] = useChangeReviewsMutation();
 
   return (
     <div className={classNames(styles.reviewForm, className)}>
       <span className={styles.title}>Reviews form</span>
-      <form>
+      <div>
         <div className={styles.box}>
           <label htmlFor="name">Name</label>
           <input
@@ -67,7 +72,7 @@ export const ReviewForm = ({ className }) => {
         </div>
         <Counter
           className={styles.counter}
-          value={formValue.rating}
+          value={isOpenChangeReviewForm ? review.rating : formValue.rating}
           increment={() => dispatch({
             type: SET_RATING,
             payload: { rating: formValue.rating + 0.5 }
@@ -77,10 +82,34 @@ export const ReviewForm = ({ className }) => {
             payload: { rating: formValue.rating - 0.5}
           })}
         />
-        <Button className={styles.button}>
-          Отправить отзыв
-        </Button>
-      </form>
+        {isOpenChangeReviewForm ? (
+          <Button
+            className={styles.button}
+            onClick={() => changeReviews({
+              restaurantId,
+              oldReview: {
+                ...formValue,
+                userId: "dfb982e9-b432-4b7d-aec6-7f6ff2e6af54"
+              },
+            })}
+          >
+            Изменить отзыв
+          </Button>
+        ) : (
+          <Button
+            className={styles.button}
+            onClick={() => createReview({
+              restaurantId,
+              newReview: {
+                ...formValue,
+                userId: "dfb982e9-b432-4b7d-aec6-7f6ff2e6af54"
+              },
+          })}
+          >
+            Отправить отзыв
+          </Button>
+        )}
+      </div>
     </div>
 
   )

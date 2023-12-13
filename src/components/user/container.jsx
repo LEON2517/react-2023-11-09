@@ -1,22 +1,14 @@
 import { User } from "./component";
-import { useDispatch, useSelector } from "react-redux";
-import {selectUserById} from "../../redux/entities/user/selectors";
-import {useEffect} from "react";
-import { getUsers } from "../../redux/entities/user/thunks/get-users";
+import {useGetUsersQuery} from "../../redux/services/api";
 
 export const UserContainer = ({ review, ...rest}) => {
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getUsers())
-  }, [])
+  const { data, isFetching } = useGetUsersQuery();
 
-  const user = useSelector(state => selectUserById(state, review.userId))
-
-  if (!user) return null;
+  if (isFetching) return "Loading...";
 
   return <User
     {...rest}
-    user={user}
+    user={data.find(({ id }) => id === review.userId)}
   />
 }

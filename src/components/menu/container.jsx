@@ -1,13 +1,11 @@
 import { Menu } from "./component";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { getDishes } from "../../redux/entities/dish/thunks/get-dishes";
+import { useGetDishesQuery } from "../../redux/services/api";
 
-export const MenuContainer = ({ dishIds, restaurantId}) => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getDishes(restaurantId))
-  }, [restaurantId])
+export const MenuContainer = ({ restaurantId }) => {
 
-  return <Menu dishIds={dishIds} />
+  const { data, isFetching } = useGetDishesQuery(restaurantId);
+  if (isFetching) return "Loading...";
+
+  return <Menu dishes={data} />
+
 }

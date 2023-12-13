@@ -1,12 +1,18 @@
 import { Layout } from "../../components/layout/component";
-import { TabsContainer } from "../../components/tabs/container";
-import { RestaurantContainer } from "../../components/restaurant/container";
+import { Tabs } from "../../components/tabs/component";
+import { Restaurant } from "../../components/restaurant/component";
 
-export const RestaurantsPage = ({ activeRestaurantId, setActiveRestaurantId }) => {
+export const RestaurantsPage = ({ restaurants, activeRestaurantId, setActiveRestaurantId }) => {
+
+  const restaurant = restaurants.find(({ id }) => id === activeRestaurantId)
+
   return (
     <Layout>
-      <TabsContainer onRestaurantSelect={(restaurantId) => setActiveRestaurantId(restaurantId)} />
-      <RestaurantContainer restaurantId={activeRestaurantId} />
+      <Tabs
+        restaurants={restaurants}
+        onRestaurantSelect={(restaurantId) => setActiveRestaurantId(restaurantId)}
+      />
+      <Restaurant restaurant={restaurant} restaurantId={activeRestaurantId} />
     </Layout>
   )
 }

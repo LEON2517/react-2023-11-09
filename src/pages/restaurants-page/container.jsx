@@ -1,14 +1,18 @@
 import { RestaurantsPage } from "./component";
 import {useState} from "react";
-import {useSelector} from "react-redux";
-import {selectRestaurantLoadingStatus} from "../../redux/entities/restaurant/selectors";
+import {useGetRestaurantsQuery} from "../../redux/services/api";
 
 export const RestaurantsPageContainer = () => {
   const [activeRestaurantId, setActiveRestaurantId] = useState(null);
 
-  const loadingStatus = useSelector(selectRestaurantLoadingStatus)
+  const { data, isLoading, isFetching } = useGetRestaurantsQuery();
+  console.log('data', data)
 
-  if (loadingStatus === 'pending') return "Loading..."
+    if (isLoading) return "Loading..."
 
-  return <RestaurantsPage activeRestaurantId={activeRestaurantId} setActiveRestaurantId={setActiveRestaurantId}/>
+  return <RestaurantsPage
+    restaurants={data}
+    activeRestaurantId={activeRestaurantId}
+    setActiveRestaurantId={setActiveRestaurantId}
+  />
 }
