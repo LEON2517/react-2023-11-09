@@ -1,6 +1,6 @@
-import { Review } from "../review/component";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
+import { ReviewContainer } from "../review/container";
 
 export const Reviews = ({ reviewIds, className }) => {
   return (
@@ -9,7 +9,7 @@ export const Reviews = ({ reviewIds, className }) => {
       <ul>
         {reviewIds.map(reviewId => (
           <li>
-            <Review id={reviewId} className={styles.review} />
+            <ReviewContainer reviewId={reviewId} className={styles.review} />
           </li>
         ))}
       </ul>
