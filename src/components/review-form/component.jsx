@@ -32,13 +32,18 @@ const reducer = (state, action) => {
   throw Error('Unknown action: ' + type);
 };
 
-export const ReviewForm = ({ className }) => {
-  const [formValue, dispatch] = useReducer(reducer, defaultFormValue)
-
+export const ReviewForm = ({
+  className,
+  onClick,
+  data = defaultFormValue,
+  id,
+  isOpenChangeReviewForm = false
+}) => {
+  const [formValue, dispatch] = useReducer(reducer, data)
   return (
     <div className={classNames(styles.reviewForm, className)}>
       <span className={styles.title}>Reviews form</span>
-      <form>
+      <div>
         <div className={styles.box}>
           <label htmlFor="name">Name</label>
           <input
@@ -77,10 +82,31 @@ export const ReviewForm = ({ className }) => {
             payload: { rating: formValue.rating - 0.5}
           })}
         />
-        <Button className={styles.button}>
-          Отправить отзыв
-        </Button>
-      </form>
+       {isOpenChangeReviewForm ? (
+          <Button
+            className={styles.button}
+            onClick={() => onClick({
+              id,
+              review: { ...formValue },
+            })}
+          >
+            Изменить отзыв
+          </Button>
+        ) : (
+          <Button
+            className={styles.button}
+            onClick={() => onClick({
+              id,
+              review: {
+                ...formValue,
+                userId: "dfb982e9-b432-4b7d-aec6-7f6ff2e6af54"
+              },
+          })}
+          >
+            Отправить отзыв
+          </Button>
+        )}
+      </div>
     </div>
 
   )

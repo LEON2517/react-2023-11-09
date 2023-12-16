@@ -1,15 +1,15 @@
 import styles from "./styles.module.scss";
 import classNames from "classnames";
-import { ReviewContainer } from "../review/container";
+import { Review } from "../review/component";
 
-export const Reviews = ({ reviewIds, className }) => {
+export const Reviews = ({ reviews, className }) => {
   return (
     <div className={classNames(styles.reviews, className)}>
       <span className={styles.title}>Reviews</span>
       <ul>
-        {reviewIds.map(reviewId => (
+        {reviews.map(review => (
           <li>
-            <ReviewContainer reviewId={reviewId} className={styles.review} />
+            <Review review={review} className={styles.review} />
           </li>
         ))}
       </ul>
