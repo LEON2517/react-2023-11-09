@@ -1,8 +1,8 @@
 import { MenuContainer } from "../menu/container";
 import { ReviewsContainer } from "../reviews/container";
-import { ReviewForm } from "../review-form/component";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
+import { ReviewFormCreateContainer } from "../review-form/create-review";
 
 export const Restaurant = ({ className, restaurant, restaurantId }) => {
   if (!restaurant) return null;
@@ -15,7 +15,7 @@ export const Restaurant = ({ className, restaurant, restaurantId }) => {
       <div className={styles.content}>
         <MenuContainer restaurantId={restaurantId} />
         <ReviewsContainer restaurantId={restaurantId} />
-        <ReviewForm restaurantId={restaurantId} />
+        <ReviewFormCreateContainer restaurantId={restaurantId} />
       </div>
     </div>
   )

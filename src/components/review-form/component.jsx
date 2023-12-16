@@ -3,7 +3,6 @@ import {Counter} from "../counter/component";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
 import { Button } from "../button/component";
-import { useChangeReviewsMutation, useCreateReviewsMutation } from "../../redux/services/api";
 
 const SET_NAME = 'Entering a name value';
 const SET_TEXT = 'Entering review text';
@@ -33,13 +32,14 @@ const reducer = (state, action) => {
   throw Error('Unknown action: ' + type);
 };
 
-export const ReviewForm = ({ className, restaurantId, isOpenChangeReviewForm, review }) => {
-  const [formValue, dispatch] = useReducer(reducer, defaultFormValue)
-
-  const [createReview] = useCreateReviewsMutation();
-
-  const [changeReviews] = useChangeReviewsMutation();
-
+export const ReviewForm = ({
+  className,
+  onClick,
+  data = defaultFormValue,
+  id,
+  isOpenChangeReviewForm = false
+}) => {
+  const [formValue, dispatch] = useReducer(reducer, data)
   return (
     <div className={classNames(styles.reviewForm, className)}>
       <span className={styles.title}>Reviews form</span>
@@ -72,7 +72,7 @@ export const ReviewForm = ({ className, restaurantId, isOpenChangeReviewForm, re
         </div>
         <Counter
           className={styles.counter}
-          value={isOpenChangeReviewForm ? review.rating : formValue.rating}
+          value={formValue.rating}
           increment={() => dispatch({
             type: SET_RATING,
             payload: { rating: formValue.rating + 0.5 }
@@ -82,15 +82,12 @@ export const ReviewForm = ({ className, restaurantId, isOpenChangeReviewForm, re
             payload: { rating: formValue.rating - 0.5}
           })}
         />
-        {isOpenChangeReviewForm ? (
+       {isOpenChangeReviewForm ? (
           <Button
             className={styles.button}
-            onClick={() => changeReviews({
-              restaurantId,
-              oldReview: {
-                ...formValue,
-                userId: "dfb982e9-b432-4b7d-aec6-7f6ff2e6af54"
-              },
+            onClick={() => onClick({
+              id,
+              review: { ...formValue },
             })}
           >
             Изменить отзыв
@@ -98,9 +95,9 @@ export const ReviewForm = ({ className, restaurantId, isOpenChangeReviewForm, re
         ) : (
           <Button
             className={styles.button}
-            onClick={() => createReview({
-              restaurantId,
-              newReview: {
+            onClick={() => onClick({
+              id,
+              review: {
                 ...formValue,
                 userId: "dfb982e9-b432-4b7d-aec6-7f6ff2e6af54"
               },

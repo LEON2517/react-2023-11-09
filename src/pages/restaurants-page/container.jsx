@@ -5,8 +5,7 @@ import {useGetRestaurantsQuery} from "../../redux/services/api";
 export const RestaurantsPageContainer = () => {
   const [activeRestaurantId, setActiveRestaurantId] = useState(null);
 
-  const { data, isLoading, isFetching } = useGetRestaurantsQuery();
-  console.log('data', data)
+  const { data, isLoading } = useGetRestaurantsQuery();
 
     if (isLoading) return "Loading..."
 
