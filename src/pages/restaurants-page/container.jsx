@@ -3,7 +3,7 @@ import {useState} from "react";
 import {useGetRestaurantsQuery} from "../../redux/services/api";
 
 export const RestaurantsPageContainer = () => {
-  const [activeRestaurantId, setActiveRestaurantId] = useState(null);
+/*  const [activeRestaurantId, setActiveRestaurantId] = useState(null);*/
 
   const { data, isLoading } = useGetRestaurantsQuery();
 
@@ -11,7 +11,7 @@ export const RestaurantsPageContainer = () => {
 
   return <RestaurantsPage
     restaurants={data}
-    activeRestaurantId={activeRestaurantId}
-    setActiveRestaurantId={setActiveRestaurantId}
+/*    activeRestaurantId={activeRestaurantId}
+    setActiveRestaurantId={setActiveRestaurantId}*/
   />
 }

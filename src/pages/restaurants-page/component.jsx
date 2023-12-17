@@ -1,18 +1,23 @@
-import { Layout } from "../../components/layout/component";
 import { Tabs } from "../../components/tabs/component";
 import { Restaurant } from "../../components/restaurant/component";
+import {Outlet, useSearchParams} from "react-router-dom";
 
-export const RestaurantsPage = ({ restaurants, activeRestaurantId, setActiveRestaurantId }) => {
+export const RestaurantsPage = ({ restaurants }) => {
 
-  const restaurant = restaurants.find(({ id }) => id === activeRestaurantId)
+  const [searchParams] = useSearchParams();
+  const selectedRestaurant = searchParams.get('selectedRestaurant')
+  console.log('selectedRestaurant', selectedRestaurant)
+
+
+  const restaurant = restaurants.find(({ id }) => id === selectedRestaurant)
 
   return (
-    <Layout>
+    <>
       <Tabs
         restaurants={restaurants}
-        onRestaurantSelect={(restaurantId) => setActiveRestaurantId(restaurantId)}
       />
-      <Restaurant restaurant={restaurant} restaurantId={activeRestaurantId} />
-    </Layout>
+      <Outlet />
+      <Restaurant restaurant={restaurant} restaurantId={selectedRestaurant} />
+    </>
   )
 }
