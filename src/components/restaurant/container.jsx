@@ -1,22 +1,8 @@
-import {useDispatch, useSelector} from "react-redux";
-import {selectRestaurantBiId, selectRestaurantLoadingStatus} from "../../redux/entities/restaurant/selectors";
 import { Restaurant } from "./component";
-import {useEffect} from "react";
-import {getRestaurants} from "../../redux/entities/restaurant/thunks/get-restaurants";
-import { REQUEST_STATUSES } from "../../constants/request-statuses";
+import {useParams} from "react-router-dom";
 
 export const RestaurantContainer = ({ restaurantId, ...rest}) => {
+/*  const { restaurantId } = useParams();*/
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getRestaurants())
-  }, [])
-
-  const loadingStatus = useSelector(selectRestaurantLoadingStatus)
-
-  const restaurant = useSelector(state => selectRestaurantBiId(state, restaurantId))
-  if (!restaurant) return null;
-
-  return <Restaurant {...rest} restaurant={restaurant} restaurantId={restaurantId} />
+  return <Restaurant {...props} restaurantId={restaurantId} />
 }
